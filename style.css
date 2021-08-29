@@ -1,0 +1,201 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input { 
+    height: 50px; 
+    font-size: 30px;
+    margin-top: 50px;
+    padding: 0 10px;
+    border: 1px solid hsl(214, 98%, 17%);
+    border-radius: 5px;
+    text-align: center;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#details {
+    display: flex;
+    flex-direction: row;
+}
+
+#message {
+    font-size: 40px;
+    margin: 30px 0;
+}
+
+#evilPhrase {
+    margin-top: 100px;
+    font-size: 40px;
+    text-align: center;
+}
+
+#endQuestion{
+    margin: -160px 0;
+    font-size: 40px;
+}
+
+#buttons {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+#buttons-vertical {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 170px;
+}
+
+button {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+
+.charachter-button {
+    height: 150px;
+    width: 140px;
+    font-size: 25px;
+    margin: 0 50px;
+    border-radius: 20px;         
+}
+
+.charachter-button {
+    background-color: hsl(204, 85%, 54%); 
+    color: black; 
+    border: 2px solid hsl(204, 85%, 54%);
+
+}
+
+.charachter-button:hover {
+    background-color: rgb(251, 254, 251);
+}
+  
+.play-button {
+    height: 50px;
+    width: 140px;
+    font-size: 25px;
+    border-radius: 10px;
+}
+
+.play-button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+  
+.play-button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+.playAgain-button {
+    height: 50px;
+    width: 140px;
+    font-size: 25px;
+    border-radius: 10px;
+    
+}
+
+.playAgain-button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+  
+.playAgain-button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+
+.endGame-button {
+    height: 50px;
+    width: 140px;
+    font-size: 25px;
+    border-radius: 10px;
+    
+}
+
+.endGame-button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f11010;
+}
+
+.endGame-button:hover {
+    background-color: #f10f0f;
+    color: white;
+}
+
+.yesButton {
+    height: 50px;
+    width: 140px;
+    font-size: 19px;
+    border-radius: 10px;
+
+    background-color: white; 
+    color: black; 
+    border: 2px solid #5f450b;
+}
+
+.yesButton:hover {
+    background-color: #747209;
+    color: white;
+}
+
+.noButton {
+    height: 50px;
+    width: 140px;
+    font-size: 19px;
+    border-radius: 10px;
+
+    background-color: white; 
+    color: black; 
+    border: 2px solid #326120;
+
+}
+
+.noButton:hover {
+    background-color: #48ff00;
+    color: white;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 150px;
+    width: 140px;
+    font-size: 25px;
+    margin: 0 50px;
+    border-radius: 20px;
+    background-color: hsl(204, 85%, 54%); 
+    color: black; 
+    border: 2px solid hsl(204, 85%, 54%);
+         
+}
+
+#player-details,
+#computer-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

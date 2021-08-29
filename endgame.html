@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>RPS game</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+
+     <body>
+
+        <div id="main-container">
+            
+            <div id = "evilPhrase">
+                You bloody ejit!<br>
+                Are you sure you wanna leave?
+             </div>
+        
+
+
+            <div id = "buttons-vertical" >
+                <div style="height: 50px;"></div>
+                <button class = yesButton type="button" onclick="reset()">Yaasss, I do</button>
+                <div style="height: 25px;"></div>
+                <button class = noButton type="button" onclick="window.location.href = 'index.html'">No, play again</button>
+            </div>
+
+
+            <script type="text/javascript">
+                function reset() {
+                    localStorage.clear();
+                    window.location.href = "index.html";
+                }
+                
+            </script>
+
+        </div>
+     </body>
+</html>

@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <title>RPS game</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+
+    <body> 
+        <h1 style="text-align: center;">
+           Game Total Score - <span id="score">0:0</span>
+        </h1>
+
+         <div id="main-container">
+
+            <div id="details">
+                
+                <div id = "player-details">
+                    <input 
+                        type="text"
+                        id="playerName"
+                        placeholder="Your Name"
+                        disabled
+                    ></input>
+                    <div style="height: 20px;"></div>
+                    <div class="card">
+                        <span>Rock</span>
+                    </div>
+
+                </div>
+                 
+                <div style="width: 50px;"></div>
+                
+                <div id = "computer-details">
+
+                    <input 
+                        type="text"
+                        id="computerName"
+                        placeholder="Computer"
+                        disabled
+                    ></input>
+                    <div style="height: 20px;"></div>
+                    <div class="card">
+                        <span>Paper</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id = "message">
+                Computer won!
+            </div>
+
+           <div id="buttons">
+                <button class="playAgain-button" type="button" onclick="window.location.href = 'index.html'">Play Again</button>
+                <div style="width: 50px;"></div>
+                <button class="endGame-button" type="button" onclick="window.location.href = 'endgame.html'">End Game</button> 
+           </div>
+        </div>
+
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function(){
+                
+                // pull player's name and show it on screen
+                let playerName = document.getElementById("playerName");
+                playerName.value = localStorage.getItem("playerName");
+
+                let playerCharacter = localStorage.getItem("playerCharacter");
+
+                document.querySelector("#player-details .card span").innerText = 
+                    playerCharacter.charAt(0).toUpperCase() + 
+                    playerCharacter.substr(1).toLowerCase();
+
+                // get scores for previous games:
+                let playerScore = localStorage.getItem("playerScore");
+                let computerScore = localStorage.getItem("computerScore");
+                
+                // if no scores were found then assign 0 values to them:
+                playerScore = playerScore == null ? 0 : Number(playerScore);
+                computerScore = computerScore == null ? 0 : Number(computerScore);
+
+                
+                // caclulate score for the current game:
+                let currentScore = getScore();
+
+                // re-calculate totals:
+                playerScore += currentScore.playerScore;
+                computerScore += currentScore.computerScore;
+
+                // place totals on the page:
+                let score = document.getElementById("score");
+                score.innerText = `${playerScore}:${computerScore}`;
+
+                localStorage.setItem("playerScore", playerScore);
+                localStorage.setItem("computerScore", computerScore);
+
+                document.querySelector("#message").innerText = currentScore.message;
+
+            });
+
+            function getScore() {
+                let score = {
+                    "playerScore": 0,
+                    "computerScore": 0,
+                    "message": "It's a draw!"
+                };
+
+                let rps =  ["paper", "rock", "scissors"];
+
+                playerCharacter = localStorage.getItem("playerCharacter");
+                computerCharacter = rps[Math.floor(Math.random() * 3)];
+
+                localStorage.setItem("computerCharacter", computerCharacter);
+
+                document.querySelector("#computer-details .card span").innerText = 
+                    computerCharacter.charAt(0).toUpperCase() + 
+                    computerCharacter.substr(1).toLowerCase();
+                
+                if (playerCharacter === "paper") {
+                    if (computerCharacter == "scissors") {
+                        score.computerScore += 1;
+                        score.message = "Computer won!";
+                    } else if (computerCharacter == "rock") {
+                        score.playerScore += 1;
+                        score.message = "Player won!";
+                    } 
+
+                } else if (playerCharacter === "scissors") {
+                    if (computerCharacter == "paper") {
+                        score.playerScore += 1;
+                        score.message = "Player won!";
+                    } else if (computerCharacter == "rock") {
+                        score.computerScore += 1;
+                        score.message = "Computer won!";
+                    } 
+
+                } else if (playerCharacter === "rock") {
+                    if (computerCharacter == "scissors") {
+                        score.playerScore += 1;
+                        score.message = "Computer won!";
+                    } else if (computerCharacter == "paper") {
+                        score.computerScore += 1;
+                        score.message = "Player won!";
+                    } 
+
+                }
+                
+                return score;
+            };
+
+        </script>
+
+     </body>
+</html>

@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>RPS game</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    
+    <body>
+        <div id="main-container">
+            <div>
+                <input 
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                ></input>
+            </div>
+            
+            <div id="buttons">
+                <button id="paper"    class="charachter-button" type="button" onclick="chooseCharacter('paper')">Paper</button>
+                <button id="rock"     class="charachter-button" type="button" onclick="chooseCharacter('rock')">Rock</button>
+                <button id="scissors" class="charachter-button" type="button" onclick="chooseCharacter('scissors')">Scissors</button>
+            </div>
+            
+            <div>
+                <button class="play-button" type="button" onclick="Redirect('result.html')">Play</button>
+                <button class="endGame-button" type="button" onclick="window.location.href = 'endgame.html'">Restart</button>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            document.addEventListener("DOMContentLoaded", function(){
+                // pull player's name and show it on screen
+                let playerName = localStorage.getItem("playerName");
+                
+                if (playerName != null) {
+                    let name = document.getElementById("name");
+                    name.value = localStorage.getItem("playerName");
+                    name.setAttribute("disabled", true);
+                }
+                
+                
+            });
+
+            function chooseCharacter(playerCharacter) {
+
+                // change look and feel for the selected R-P-S option
+                
+                // reset border for all buttons to the default style:
+                // "2px solid hsl(204, 85%, 54%)"
+                let buttons = document.getElementById("buttons");
+                
+                buttons
+                    .querySelectorAll("button")
+                    .forEach((button) => {button.style.border = "2px solid hsl(204, 85%, 54%)"});
+
+                // set "selected" border for the button clicked. 
+                let choice = document.getElementById(playerCharacter);
+                choice.style.border = "5px solid rgb(50, 100, 180)";
+                localStorage.setItem("playerCharacter", playerCharacter);
+            }
+
+            function Redirect(url) {
+                
+                // collect data
+                let name = document.getElementById("name");
+                
+                if (name.value === "") {
+                    alert("Enter your name, please!");
+                    return;
+                }
+
+                if (localStorage.getItem("playerCharacter") == null) {
+                    alert("Choose your character, please!");
+                    return;
+                }
+                
+                localStorage.setItem("playerName", name.value);
+                
+                // send data to result.html before redirecting
+                window.location.href = `./${url}`;
+            }
+
+        </script>
+    </body>
+</html>
